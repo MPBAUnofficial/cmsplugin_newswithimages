@@ -1,0 +1,110 @@
+/*==============================================================================
+    cmsplugin_newswithimages css
+==============================================================================*/
+
+#news-div {
+    background: none repeat scroll 0 0 transparent;
+    border: 0 none;
+    float: left;
+    font-size: 100%;
+    height: auto;
+    line-height: 20px;
+    margin: 0;
+    outline: 0 none;
+    padding: 1%;
+    text-align: justify;
+    vertical-align: baseline;
+    width: 100%;
+    min-height: 100px;
+}
+
+/* define a table for the news*/
+.news_class {
+    display:table;
+    float:right;
+    margin-right:2.5%;
+    width: 95%;
+    padding: 2px; 
+}
+
+.news_row {
+    display: table-row;    
+    width: 100%;
+}
+
+.news_details {
+    display: table-cell;
+    height: auto;
+    width: auto; 
+    overflow: hidden;
+}
+
+.news_image_section {
+    display: table-cell; 
+    width: 30%;
+    height:auto;
+    align:center;
+    vertical-align:middle;
+}
+
+
+/* object inside the news table */
+.news_title{
+    padding-top:10px;
+}
+
+.news_text{
+    margin-bottom: 10px;
+}
+
+h5.uppercase{
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 12px;
+}
+
+/* no slide */
+div.news_image_section img.image_news_no_slide {
+    float: none;
+    display: block;
+    margin: auto;
+    max-height: 100px;
+    max-width: 100px;
+}
+
+
+/* slider news */
+
+div.news_slides{
+    position: relative;
+    margin: auto;   
+    height: 100px;
+    width: 100px; 
+}
+
+
+div.news_slides div.news_image_slide_div{
+    position: absolute; 
+    top: 0px; 
+    left: 0px; 
+    display: block; 
+    z-index: 5; 
+    opacity: 0;
+    height: 100px;
+    width: 100px;
+}
+
+div.news_image_slide_div div.news_center_image{
+    display:table-cell;
+    height: 100px;
+    width: 100px;
+    vertical-align:middle;
+}
+
+div.news_center_image img.image_news_slideshow{
+    float: none;
+    display: block;
+    margin: auto;
+    max-height: 100px;
+    max-width: 100px;
+}
