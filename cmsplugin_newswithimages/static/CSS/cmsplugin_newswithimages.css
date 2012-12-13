@@ -63,7 +63,7 @@ h5.uppercase{
     font-size: 12px;
 }
 
-/* no slide */
+/* image no slide */
 div.news_image_section img.image_news_no_slide {
     float: none;
     display: block;
@@ -107,4 +107,34 @@ div.news_center_image img.image_news_slideshow{
     margin: auto;
     max-height: 100px;
     max-width: 100px;
+}
+
+/* rotate news controls */
+div.slider_controls_div {
+    text-align: left;
+    width:92%;
+}
+
+
+div.slider_controls_div div.slider-control-button {
+    height:auto;
+    width: 30px;
+    margin-left:8px;
+    background-color:#085DAD;
+    color:white;
+    float:right;
+    font-weight:bold;
+    text-align:center;
+    vertical-align:middle;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+div.slider_controls_div div.slider-control-button:hover{
+    background-color:#FFFFFF;
+    color:#3399FF;
 }

@@ -16,7 +16,7 @@ class NewsPublisherManager(models.Manager):
         return super(NewsPublisherManager, self).get_query_set() \
                 .filter(pubblication_date__lte=timezone.now()) \
                 .filter(is_published=True) \
-                .order_by('pubblication_date')
+                .order_by('-pubblication_date', '-pubblication_date__time')
 
 
 class News(models.Model):
@@ -50,6 +50,7 @@ class News(models.Model):
                    help_text=_("the date in which the news will be published"),
                  )
 
+
     is_published = models.BooleanField \
                        (
                          _('published'), 
@@ -79,7 +80,7 @@ class News(models.Model):
     class Meta:
         verbose_name=_("news")
         verbose_name_plural=_("news")
-        ordering = ['pubblication_date']
+        ordering = ['-pubblication_date']
 
 
 
@@ -116,7 +117,9 @@ class Image(models.Model):
                           )
     def clean(self):
         if not self.image and not self.image_url:
-            raise ValidationError(_("Image not specified, use image or alternative url to specify the image source"))
+            raise ValidationError(_("Image not specified, use image or " \
+                                    "alternative url to specify the " \
+                                    "image source"))
 
     def __unicode__(self):
         return self.title or self.alt or str(self.pk)
@@ -142,6 +145,16 @@ class NewsPlugin(CMSPlugin):
                   default = 'all',
                   max_length=20,
                 )
+
+    rotate_element = models.BooleanField \
+                  (
+                    verbose_name=_("rotate news"),
+                    help_text=_("If this option is selected when there is " \
+                                "more news than the number spicified in " \
+                                "limit, they rotate in the available space " \
+                                "instead of be hidden"),
+                    default=True,
+                  )
 
     def __unicode__(self):
         return _(u'showing %(count)d news') % {'count': self.max_news}

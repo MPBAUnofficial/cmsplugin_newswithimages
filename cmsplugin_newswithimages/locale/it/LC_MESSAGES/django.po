@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-09 11:12+0100\n"
+"POT-Creation-Date: 2012-12-12 13:55+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -32,7 +32,7 @@ msgstr "gestione date"
 msgid "News manager"
 msgstr "Gestore news"
 
-#: cms_plugins.py:20 models.py:77 models.py:78
+#: cms_plugins.py:34 models.py:80 models.py:81
 msgid "news"
 msgstr "news"
 
@@ -44,7 +44,7 @@ msgstr "autore"
 msgid "modified by"
 msgstr "modificato da"
 
-#: models.py:41 models.py:104
+#: models.py:41 models.py:107
 msgid "title"
 msgstr "titolo"
 
@@ -76,54 +76,65 @@ msgstr "testo"
 msgid "the text of the news"
 msgstr "testo della notizia"
 
-#: models.py:67 models.py:133
+#: models.py:67 models.py:141
 msgid "language"
 msgstr "lingua"
 
-#: models.py:89
+#: models.py:92
 msgid "alternative image url"
 msgstr "url alternativa all'immagine"
 
-#: models.py:93
+#: models.py:96
 msgid "this URL is used only if no image are specified"
 msgstr ""
 "questa url verrá utilizzata solamente se non é stata specificata alcuna "
 "immagine"
 
-#: models.py:99 models.py:119
+#: models.py:102 models.py:127
 msgid "image"
 msgstr "immagine"
 
-#: models.py:110
+#: models.py:113
 #, fuzzy
 msgid "alt text"
 msgstr "testo alternativo"
 
-#: models.py:116
+#: models.py:119
 msgid ""
 "Image not specified, use image or alternative url to specify the image source"
 msgstr ""
 "Immagine non specificata, utilizzare i campi immagine o URL alternativa per "
 "specificare un immagine"
 
-#: models.py:120
+#: models.py:128
 msgid "images"
 msgstr "immagini"
 
-#: models.py:126
+#: models.py:134
 msgid "limit of news"
 msgstr "numero massimo di news"
 
-#: models.py:127
+#: models.py:135
 msgid "how many news to diplay"
 msgstr "numero di news da visualizzare"
 
-#: models.py:135
+#: models.py:143
 msgid "All"
 msgstr "Tutte"
 
-#: models.py:141
+#: models.py:150
+msgid "rotate news"
+msgstr "ruota news"
+
+#: models.py:151
+msgid ""
+"If this option is selected when there is more news than the number spicified "
+"in limit, they rotate in the available space instead of be hidden"
+msgstr ""
+"Se questa opzione è selezionata e ci sono piú news attive rispetto al limite"
+"specificato, le news saranno ruotate all'interno dello spazio disponibile"
+
+#: models.py:159
 #, python-format
 msgid "showing %(count)d news"
 msgstr "mostra %(count)d news"
-

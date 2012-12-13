@@ -1,0 +1,85 @@
+{% load sekizai_tags thumbnail static %}
+<div id="news-div">
+    <h2>{{ header|capfirst }}</h2>
+    <div class="news_class news_rotate{{id}}">
+        {% for news in information %}
+            <div class="news_row"> 
+                <div class ="news_details">
+                    <h3 class="news_title">{{ news.title|capfirst }}</h3> 
+                    <h5 class="uppercase" >{{ news.pubblication_date|date:"DATETIME_FORMAT" }}</h5> 
+                    <div class="news_text"> 
+                        {{ news.text|capfirst  }} 
+                    </div>
+                    <div>
+                        <h5 class="uppercase" >{{ news.author }}</h5> 
+                    </div>
+                </div>  
+                <div class="news_image_section"> 
+                    {% if news.image_set.all|length == 0 %} 
+                        <img class="image_news_no_slide" src="{{ STATIC_URL }}images/no_news.png" title="News image" alt="No Picture!" /> 
+                    {% elif news.image_set.all|length == 1 %} 
+                        {% with news.image_set.all|first as image %}
+                            {% if image.image %}
+                                <img class="image_news_no_slide" src="{% thumbnail image.image 100x100 %}" title="{{ image.title|capfirst }}" alt="{{ image.alt|capfirst }} - No Picture!"  /> 
+                            {% else %}
+                                <img class="image_news_no_slide" src= "{{ image.image_url }}" title="{{ image.title|capfirst }}" alt="{{ image.alt|capfirst }} - No Picture!" />
+                            {% endif %}
+                        {% endwith %}
+                    {% else %}
+                        <div class=news_slides>
+                            {% for image in news.image_set.all %} 
+                                <div class="news_image_slide_div">
+                                    <div class="news_center_image">
+                                        {% if image.image  %}  
+                                            <img class="image_news_slideshow" src="{% thumbnail image.image 100x100%}" title="{{ image.title|capfirst }}" alt="{{ image.alt|capfirst }} - No Picture!"/>
+                                        {% else %}
+                                            <img class="image_news_slideshow" src="{{ image.image_url }}" title="{{ image.title|capfirst }}" alt="{{ image.alt|capfirst }} - No Picture!" /> 
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            {% endfor %} 
+                        </div>
+                    {% endif %} 
+                </div>        
+            </div>
+        {% endfor %} 
+    </div>
+    <div class="slider_controls_div"> 
+        <div id='next{{id}}' class="slider-control-button">&gt;</div>
+        <div id='back{{id}}' class="slider-control-button">&lt;</div>
+    </div>
+</div>
+
+{% addtoblock "js"%}
+<script type="text/javascript" src="{{STATIC_URL}}js/jquery-180.js"></script>
+{% endaddtoblock %}
+
+{% addtoblock "js" %}
+<script type="text/javascript" src="{{STATIC_URL}}js/jquery-cycle.js"></script>
+{% endaddtoblock %}
+
+{% addtoblock "js" %}
+<script type="text/javascript" src="{{STATIC_URL}}js/rotator.js"></script>
+{% endaddtoblock %}
+
+{% addtoblock "js" %}
+<script type="text/javascript">
+$(document).ready(function() {
+    $('.news_slides').cycle({
+        fx: 'fade' // choose your transition type, ex: fade, scrollUp, shuffle, etc...
+    });
+
+    $('.news_rotate{{id}}').divSlider({
+        maxSlides: {{visible_news}}, 
+        nextSelector: "#next{{id}}",
+        backSelector: "#back{{id}}",
+    });
+}); 
+</script>
+{% endaddtoblock %}
+
+{% addtoblock "css" %}
+<link href="{{ STATIC_URL }}css/cmsplugin_newswithimages.css" media="screen" rel="stylesheet" type="text/css" />
+{% endaddtoblock %}
+
+

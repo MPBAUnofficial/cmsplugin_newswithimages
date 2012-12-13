@@ -2,8 +2,8 @@ from setuptools import setup, find_packages
 
 setup(
         name='cmsplugin_newswithimages',
-        version='1.1',
-        description='Django cms plugin for insert newss',
+        version='1.2',
+        description='Django cms plugin for insert news',
         author='Colleoni Luca for fbk',
         author_email='colleoni@fbk.eu',
         packages = find_packages(),
