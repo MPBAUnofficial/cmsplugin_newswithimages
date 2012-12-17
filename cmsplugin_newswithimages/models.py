@@ -16,7 +16,7 @@ class NewsPublisherManager(models.Manager):
         return super(NewsPublisherManager, self).get_query_set() \
                 .filter(pubblication_date__lte=timezone.now()) \
                 .filter(is_published=True) \
-                .order_by('-pubblication_date', '-pubblication_date__time')
+                .order_by('-pubblication_date')
 
 
 class News(models.Model):
